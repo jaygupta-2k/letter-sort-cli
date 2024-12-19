@@ -1,44 +1,68 @@
-def move_letters(orig, final):
-    orig = orig.copy()
-    final = final.copy()
-    if len(final)<4 and len(orig)>0:
-        if len(final)==0 or final[-1]==orig[-1]:
-            prev_val = orig[-1]
-            while len(final)<4 and orig[-1]==prev_val:
-                prev_val=orig[-1]
-                final.append(orig.pop())
-                if len(orig)==0:
-                    break
-        else:
-            return None
-    else:
-        return None
-    return [orig, final]
+def move_letters(source, destination):
+    """
+    Moves a letter from the source stack to the destination stack if valid.
 
-def solvable_check(stack_list, length):
-    stack = stack_list.copy()
-    for i in range(length-1):
-        flag1 = False
-        flag2 = False
-        if len(stack[i]) == 4 and len(set(stack[i])) == 1:
-            continue
-        if len(set(stack[i])) == 1:
-            flag1 = True
-        elif len(stack[i]) == 0:
-            flag2 = True
-        for j in range(i+1,length):
-            if len(stack[j]) == 4 and len(set(stack[j])) == 1:
-                continue
-            if len(set(stack[j])) == 1 and flag2:
-                continue
-            elif len(stack[j]) == 0 and flag1:
-                continue
-            if move_letters(stack[i], stack[j]):
-                last = stack[i][-1]
-                if move_letters(stack[j], stack[i]):
-                    if stack[i].count(last) > stack[j].count(last) or (stack[i].count(last) == stack[j].count(last) and len(stack[i]) < len(stack[j])):
-                        return f"Hint: {j+1}, {i+1}"
-                return f"Hint: {i+1}, {j+1}"
-            elif move_letters(stack[j], stack[i]):
-                return f"Hint: {j+1}, {i+1}"
-    return None
+    Args:
+        source (list): The source stack.
+        destination (list): The destination stack.
+
+    Returns:
+        bool: True if the move was successful, False otherwise.
+    """
+    flag = False
+
+    if not source:
+        return flag  # Cannot move from an empty stack
+
+    while not destination or source[-1] == destination[-1]:
+        destination.append(source.pop())
+        flag = True
+        if not source:
+            break
+
+    return flag  # Invalid move if colors don't match
+
+
+def solvable_check(stack_list, max_stack_size):
+    """
+    Checks if the current game state is solvable by identifying valid moves.
+
+    Args:
+        stack_list (list of lists): The current state of the stacks.
+        max_stack_size (int): The maximum allowed stack size.
+
+    Returns:
+        tuple: (source_index, destination_index) for a valid move, or None if no move exists.
+    """
+    for source_index, source_stack in enumerate(stack_list):
+        if not source_stack:
+            continue  # Skip empty stacks
+
+        for destination_index, destination_stack in enumerate(stack_list):
+            if source_index == destination_index:
+                continue  # Skip the same stack
+
+            if (not destination_stack or source_stack[-1] == destination_stack[-1]) and len(destination_stack) < max_stack_size:
+                return source_index, destination_index
+
+    return None  # No valid moves
+
+
+if __name__ == "__main__":
+    # Example usage
+    stacks = [
+        ["A", "B"],
+        ["B"],
+        [],
+        []
+    ]
+
+    print("Before move:", stacks)
+    move_letters(stacks[0], stacks[2])
+    print("After move:", stacks)
+
+    hint = solvable_check(stacks, 4)
+    if hint:
+        print(f"Hint: Move from stack {hint[0] + 1} to stack {hint[1] + 1}.")
+    else:
+        print("No valid moves available.")
