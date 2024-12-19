@@ -5,11 +5,11 @@ Recreating the classical color sort game in Python.
 1. Get the code.
    You can either download the code or clone it using git.
    ```
-   git clone https://github.com/jaygupta-2k/color_sort.git
+   git clone https://github.com/jaygupta-2k/color_sort.git -b color-sort-v2 v2
    ```
 2. Open the directory in your terminal/move into the directory
    ```
-   cd color_sort
+   cd v2
    ```
 4. Run using the following command
    ```
