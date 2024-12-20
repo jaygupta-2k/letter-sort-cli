@@ -1,7 +1,7 @@
 import random
-from os import system
+import os
 from create_stack import create_stack
-from disp_func import stack_disp, prompts
+from disp_func import welcome, stack_disp, prompts
 from letter_func import move_letters, solvable_check
 
 # Constants for the game
@@ -12,11 +12,8 @@ HINT_COMMAND = 'H'
 NEW_COMMAND = 'N'
 
 def main():
-    system('clear;')
-    print("Welcome to the Color Sort Game!")
-    player_name = input("> Enter your name\n> ")
-    print(f"> Hello, {player_name}! Let's begin.")
-
+    """Main function to run the game."""
+    player_name=welcome()
     # Game initialization
     while True:
         new = False
@@ -25,44 +22,45 @@ def main():
 
         while True:
             stack_disp(stack_list)
-            print("> "+prompts(context="transition"))
 
             if all(is_solved(stack) for stack in stack_list if stack):
-                print(f"> Congratulations, {player_name}! You solved the game.")
-                new = input(f"> {prompts(context="repeat")}[Y/n]\n> ")
+                print(f"\n> Congratulations, {player_name}! You solved the game.")
+                new = input(f"\n> {prompts(context="repeat")}[Y/n]\n> ")
                 break
 
+            print("\n> "+prompts(context="transition"))
             command = input("> Enter your move (e.g., 1->2) or a command (H for hint, R to reset, Q to quit, N to start a new game)\n> ").strip().upper()
 
             if command == QUIT_COMMAND:
-                print(f"> Thanks for playing, {player_name}!")
                 break
             elif command == RESET_COMMAND:
                 stack_list = [stack.copy() for stack in original_stack_list]
-                print("> Game reset!")
-                print("> "+prompts(context="restart"))
+                print("\n> Game reset!")
+                print("\n> "+prompts(context="restart"))
             elif command == HINT_COMMAND:
                 hint = provide_hint(stack_list)
                 print(hint)
             elif command == NEW_COMMAND:
-                print("> New game!")
-                # print("> "+prompts(context="new"))
                 new = ""
                 break
             else:
                 try:
                     source, destination = parse_move(command)
                     if move_letters(stack_list[source], stack_list[destination]):
-                        print(f"> Moved from stack {source + 1} to stack {destination + 1}.")
+                        print(f"\n> Moved from stack {source + 1} to stack {destination + 1}.\n")
                     else:
-                        print("> Invalid move. Please try again.")
-                        print("> "+prompts(context="error"))
+                        print(f"\n> Invalid move. Please try again.\n> {prompts(context="error")}\n")
                 except ValueError:
-                    print("> Invalid input. Please use the format 1->2 or a valid command.")
-                    print("> "+prompts(context="error"))
+                    print(f"\n> Invalid input. Please use the format 1->2 or a valid command.\n> {prompts(context='error')}\n")
 
         if new not in ['Y','y',""]:
+            print(f"\n> Thanks for playing, {player_name}!")
             break
+        else:
+            print("\n> New game!\n")
+            # print("> "+prompts(context="new"))
+    # input()
+    # os.system('cls' if os.name == 'nt' else 'clear')
 
 def parse_move(command):
     """Parses the player's move command."""
@@ -84,8 +82,8 @@ def provide_hint(stacks):
     solvable_move = solvable_check(stacks, MAX_STACK_SIZE)
     if solvable_move:
         source, destination = solvable_move
-        return f"> Hint: Try moving from stack {source + 1} to stack {destination + 1}."
-    return "> No valid moves. Consider undoing or restarting."
+        return f"\n> Hint: Try moving from stack {source + 1} to stack {destination + 1}."
+    return "\n> No valid moves. Consider undoing or restarting."
 
 if __name__ == "__main__":
     main()

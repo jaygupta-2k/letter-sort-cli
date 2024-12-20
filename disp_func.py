@@ -1,5 +1,24 @@
+import os
 import random
 from tabulate import tabulate
+
+def welcome():
+    """
+    Displays the welcome message for the game.
+    """
+    c, l = os.get_terminal_size()
+    header = " Color Sort Game "
+    padding=c-len(header)
+    left_pad=padding//2
+    right_pad=padding-left_pad
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"{'-'*left_pad}{header}{'-'*right_pad}\n")
+    print("Welcome to the Color Sort Game!")
+    print("The goal is to sort colors into uniform stacks.\n")
+    player_name = input("> Enter your name\n> ")
+    print(f"\n> Hello, {player_name}! Let's begin.\n")
+    return player_name
 
 def stack_disp(stacks):
     """
