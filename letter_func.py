@@ -1,3 +1,5 @@
+from constants import MAX_STACK_SIZE
+
 def move_letters(source, destination):
     """
     Moves a letter from the source stack to the destination stack if valid.
@@ -11,10 +13,10 @@ def move_letters(source, destination):
     """
     flag = False
 
-    if not source:
-        return flag  # Cannot move from an empty stack
+    if not source or len(destination) == MAX_STACK_SIZE:
+        return flag  # Cannot move from an empty stack or to stack of max length
 
-    while not destination or source[-1] == destination[-1]:
+    while (not destination or source[-1] == destination[-1]) and len(destination) != MAX_STACK_SIZE:
         destination.append(source.pop())
         flag = True
         if not source:

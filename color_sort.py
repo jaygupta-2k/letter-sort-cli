@@ -1,15 +1,9 @@
-import random
-import os
+import re
+from time import sleep
 from create_stack import create_stack
-from disp_func import welcome, stack_disp, prompts
+from disp_func import *
 from letter_func import move_letters, solvable_check
-
-# Constants for the game
-MAX_STACK_SIZE = 4
-QUIT_COMMAND = 'Q'
-RESET_COMMAND = 'R'
-HINT_COMMAND = 'H'
-NEW_COMMAND = 'N'
+from constants import *
 
 def main():
     """Main function to run the game."""
@@ -29,7 +23,7 @@ def main():
                 break
 
             print("\n> "+prompts(context="transition"))
-            command = input("> Enter your move (e.g., 1->2) or a command (H for hint, R to reset, Q to quit, N to start a new game)\n> ").strip().upper()
+            command = input("> Enter your move (e.g., 1->2) or a command\n> ").strip().upper()
 
             if command == QUIT_COMMAND:
                 break
@@ -41,8 +35,12 @@ def main():
                 hint = provide_hint(stack_list)
                 print(hint)
             elif command == NEW_COMMAND:
-                new = ""
+                new = ''
                 break
+            elif command == INFO_COMMAND:
+                print()
+                how_to_play()
+                sleep(5)
             else:
                 try:
                     source, destination = parse_move(command)
@@ -53,7 +51,7 @@ def main():
                 except ValueError:
                     print(f"\n> Invalid input. Please use the format 1->2 or a valid command.\n> {prompts(context='error')}\n")
 
-        if new not in ['Y','y',""]:
+        if new not in ['Y','y','']:
             print(f"\n> Thanks for playing, {player_name}!")
             break
         else:
@@ -64,10 +62,11 @@ def main():
 
 def parse_move(command):
     """Parses the player's move command."""
-    if '->' not in command or len(command.split('->')) != 2:
+    command = list(filter(str.strip, re.split(r'->|[,\-\s]',command)))
+    if len(command) != 2:
         raise ValueError("Invalid move format.")
 
-    source, destination = map(int, command.split('->'))
+    source, destination = map(int, command)
     source_index = source - 1
     destination_index = destination - 1
 

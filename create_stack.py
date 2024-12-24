@@ -1,11 +1,5 @@
 import random
-
-# Constants for stack generation
-MAX_STACK_SIZE = 4
-MIN_STACKS = 5
-MAX_STACKS = 9
-COLORS = ['A', 'B', 'C', 'D', 'E', 'F']
-
+from constants import *
 
 def create_stack(num_stacks=None):
     """
