@@ -1,5 +1,5 @@
 # Color Sort
-Recreating the classical color sort game in Python.
+Recreating the classic color sort game in Python.
 
 ## How to run?
 1. Get the code.
@@ -11,7 +11,7 @@ Recreating the classical color sort game in Python.
    ```
    cd letter-sort-cli
    ```
-4. Install the package
+3. Install the package
    ```
    pip install .
    ```
@@ -19,7 +19,7 @@ Recreating the classical color sort game in Python.
    ```
    pip3 install .
    ```
-5. Run the game
+4. Run the game
    ```
    letter-sort
    ```
@@ -27,4 +27,4 @@ Recreating the classical color sort game in Python.
 ## To-do
 1. Write an algorithm to solve the game.
 2. Improve hints function logic.
-3. Developing a GUI.
+3. Allow users to configure stack sizes or themes via CLI flags or config files.
