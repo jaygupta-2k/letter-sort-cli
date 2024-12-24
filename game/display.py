@@ -1,7 +1,7 @@
 import os
 import random
 from tabulate import tabulate
-from constants import MAX_STACK_SIZE
+from .constants import MAX_STACK_SIZE
 
 def welcome():
     """
@@ -21,6 +21,7 @@ def welcome():
     print(f"\n> Hello, {player_name}! Let's begin.\n")
     return player_name
 
+
 def how_to_play():
     """
     Displays the "how to play?" message
@@ -38,7 +39,8 @@ def how_to_play():
     print("  H: Get a hint.")
     print("  I: To display this message.\n")
 
-def stack_disp(stacks):
+
+def show_stacks(stacks):
     """
     Displays the current state of the stacks in a tabular format.
 
@@ -60,6 +62,7 @@ def stack_disp(stacks):
     table.append(stack_labels)
 
     print(tabulate(table, tablefmt="rounded_outline", stralign="center", numalign="center"))
+
 
 def prompts(context="error"):
     """
@@ -119,7 +122,8 @@ if __name__ == "__main__":
         ["A"],
         []
     ]
-    stack_disp(example_stacks)
+    show_stacks(example_stacks)
     print(prompts(context="error"))
     print(prompts(context="restart"))
     print(prompts(context="transition"))
+    print(prompts(context="repeat"))

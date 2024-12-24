@@ -9,4 +9,4 @@ INFO_COMMAND = "I"
 # Constants for stack generation
 MIN_STACKS = 5
 MAX_STACKS = 9
-COLORS = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
