@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="letter_sort_game",
+    name="letter-sort-game",
     version="1.0.0",
-    author="Your Name",
+    author="Kaal",
     description="A CLI-based letter sorting game.",
     packages=find_packages(),
     entry_points={

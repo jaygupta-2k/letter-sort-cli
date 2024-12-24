@@ -96,7 +96,11 @@ def prompts(context="error"):
             "You're doing well! Keep the momentum going.",
             "Progress is progress. Let's aim for the solution!"
         ],
-        "new":[],
+        "new":[
+            "All the best!",
+            "Best of luck!",
+            "Break a leg!"
+        ],
         "repeat":[
             "Ready for a rematch?",
             "Fancy another game?",

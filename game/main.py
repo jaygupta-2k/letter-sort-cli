@@ -8,7 +8,7 @@ def main():
     player_name=welcome()
     # Game initialization
     while True:
-        new = False
+        new = True
         stack_list = initialize_game()
         original_stack_list = [stack.copy() for stack in stack_list]
 
@@ -20,7 +20,12 @@ def main():
                 new = input(f"\n> {prompts(context="repeat")}[Y/n]\n> ")
                 break
 
-            print("\n> "+prompts(context="transition"))
+            if new:
+                print("\n> " + prompts(context="new"))
+                new = False
+            else:
+                print("\n> " + prompts(context="transition"))
+
             command = input("> Enter your move (e.g., 1->2) or a command\n> ").strip().upper()
 
             if command == QUIT_COMMAND:
