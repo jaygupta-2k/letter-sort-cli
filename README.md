@@ -5,11 +5,11 @@ Recreating the classic color sort game in Python.
 1. Get the code.
    You can either download the code or clone it using git.
    ```
-   git clone https://github.com/jaygupta-2k/letter-sort-cli.git
+   git clone https://github.com/jaygupta-2k/color-sort-cli.git
    ```
 2. Open the directory in your terminal/move into the directory
    ```
-   cd letter-sort-cli
+   cd color-sort-cli
    ```
 3. Install the package
    ```
@@ -21,7 +21,7 @@ Recreating the classic color sort game in Python.
    ```
 4. Run the game
    ```
-   letter-sort
+   color-sort
    ```
 
 ## To-do
