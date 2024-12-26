@@ -1,6 +1,7 @@
 import os
 import random
 from tabulate import tabulate
+from colorama import Style, Fore, Back
 from .constants import MAX_STACK_SIZE
 
 def welcome():
@@ -14,7 +15,7 @@ def welcome():
     right_pad=padding-left_pad
 
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(f"{'-'*left_pad}{header}{'-'*right_pad}\n")
+    print(Fore.WHITE+f"{'-'*left_pad}{header}{'-'*right_pad}\n")
     print("Welcome to the Letter Sort Game!\n")
     how_to_play()
     player_name = input("> Enter your name\n> ")

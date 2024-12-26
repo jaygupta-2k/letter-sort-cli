@@ -17,7 +17,7 @@ def initialize_game(num_stacks=None):
 
     # Choose a subset of colors based on the number of stacks
     num_colors = num_stacks - 2
-    selected_colors = LETTERS[:num_colors]
+    selected_colors = COLORS[:num_colors]
 
     # Create a pool of colors with each appearing exactly MAX_STACK_SIZE times
     color_pool = selected_colors * MAX_STACK_SIZE
