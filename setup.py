@@ -1,16 +1,16 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="letter-sort-game",
+    name="color-sort-game",
     version="1.0.0",
     author="Kaal",
-    description="A CLI-based letter sorting game.",
+    description="A CLI-based color sorting game.",
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "letter-sort=game.main:main"
+            "color-sort=game.main:main"
         ]
     },
-    install_requires=["tabulate"],
+    install_requires=["tabulate","colorama"],
     python_requires=">=3.6",
 )
