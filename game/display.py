@@ -31,7 +31,7 @@ def how_to_play():
     print(f"Each stack can contain a maximum of {MAX_STACK_SIZE} letters.")
     print("You can only move the top letter of a stack.")
     print("The letter can be moved to a stack with the same letter on top or to an empty stack.\n")
-    print("You can enter you move in one of these formats")
+    print("You can enter your move in one of these formats")
     print("  1-2 or 1,2 or 1 2 or 1->2\n")
     print("Or you can enter a command")
     print("  R: Reset the game.")
