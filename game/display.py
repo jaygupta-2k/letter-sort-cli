@@ -1,5 +1,19 @@
+"""
+This file is part of ColorSort.
+Copyright (C) 2024 Jay Gupta.
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+See the GNU General Public License for more details.
+"""
+
 import os
 import random
+
+from jeepney.low_level import endian_map
 from tabulate import tabulate
 from colorama import Style, Fore, Back
 from .constants import MAX_STACK_SIZE
@@ -9,14 +23,14 @@ def welcome():
     Displays the welcome message for the game.
     """
     c, l = os.get_terminal_size()
-    header = " Letter Sort Game "
+    header = " Color Sort Game "
     padding=c-len(header)
     left_pad=padding//2
     right_pad=padding-left_pad
 
     os.system('cls' if os.name == 'nt' else 'clear')
     print(Fore.WHITE+f"{'-'*left_pad}{header}{'-'*right_pad}\n")
-    print("Welcome to the Letter Sort Game!\n")
+    print("Welcome to the Color Sort Game!\n")
     how_to_play()
     player_name = input("> Enter your name\n> ")
     print(f"\n> Hello, {player_name}! Let's begin.\n")
@@ -28,10 +42,11 @@ def how_to_play():
     Displays the "how to play?" message
     """
     print("How to play?")
-    print("The goal is to sort letters into uniform stacks.")
+    print("The goal is to sort colors into uniform stacks.")
     print(f"Each stack can contain a maximum of {MAX_STACK_SIZE} letters.")
-    print("You can only move the top letter of a stack.")
-    print("The letter can be moved to a stack with the same letter on top or to an empty stack.\n")
+    print("You can only move the top colors of a stack.")
+    print("""The letter can be moved to a stack with the same 
+colors on top or to an empty stack.\n""")
     print("You can enter your move in one of these formats")
     print("  1-2 or 1,2 or 1 2 or 1->2\n")
     print("Or you can enter a command")
@@ -118,6 +133,14 @@ def prompts(context="error"):
     }
 
     return random.choice(prompt_pool.get(context, ["Keep going!"]))
+
+def show_copyright():
+    print("\n"+Fore.GREEN+"ColorSort  Copyright (C) 2024  Jay Gupta."+Fore.RESET+"\n")
+
+def show_warranty():
+    print("\n"+Fore.GREEN+"""This is free software; see the source code for copying 
+conditions. There is ABSOLUTELY NO WARRANTY; not even for 
+MERCHANTABILITY  or FITNESS FOR A PARTICULAR PURPOSE."""+Fore.RESET+"\n")
 
 if __name__ == "__main__":
     # Example usage
