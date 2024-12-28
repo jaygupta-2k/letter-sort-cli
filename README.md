@@ -28,3 +28,4 @@ Recreating the classic color sort game in Python.
 1. Write an algorithm to solve the game.
 2. Improve hints function logic.
 3. Allow users to configure stack sizes or themes via CLI flags or config files.
+4. Add scroll to the game screen, preferably using mouse.
