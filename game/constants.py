@@ -25,7 +25,15 @@ WARRANTY = "SHOW W"
 # Constants for stack generation
 MIN_STACKS = 5
 MAX_STACKS = 9
-COLORS = [Back.RED+"   "+Back.RESET,Back.GREEN+"   "+Back.RESET,Back.YELLOW+"   "+Back.RESET,Back.BLUE+"   "+Back.RESET,Back.MAGENTA+"   "+Back.RESET,Back.CYAN+"   "+Back.RESET]
+COLORS = [
+    Back.RED+"   "+Back.RESET,
+    Back.GREEN+"   "+Back.RESET,
+    Back.BLUE+"   "+Back.RESET,
+    Back.CYAN+"   "+Back.RESET,
+    Back.MAGENTA+"   "+Back.RESET,
+    Back.YELLOW+"   "+Back.RESET,
+    Back.WHITE+"   "+Back.RESET
+]
 
 # ANSI escape codes for alternate screen
 ALT_SCREEN_ON = "\033[?1049h"

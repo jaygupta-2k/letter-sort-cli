@@ -50,14 +50,14 @@ def main():
             else:
                 print("\n> " + prompts(context="transition"))
 
-            command = input("> Enter your move (e.g., 1->2) or a command\n> ").strip().upper()
+            command = input("> Enter your move or a command\n> ").strip().upper()
 
             if command == QUIT_COMMAND:
                 break
             elif command == RESET_COMMAND:
                 stack_list = [stack.copy() for stack in original_stack_list]
                 print("\n> Game reset!")
-                print("\n> "+prompts(context="restart"))
+                print("> "+prompts(context="restart")+"\n")
             elif command == HINT_COMMAND:
                 hint = provide_hint(stack_list)
                 print(hint)

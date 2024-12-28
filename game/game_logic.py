@@ -131,8 +131,8 @@ def provide_hint(stacks):
     solvable_move = check_solvability(stacks, MAX_STACK_SIZE)
     if solvable_move:
         source, destination = solvable_move
-        return f"\n> Hint: Try moving from stack {source + 1} to stack {destination + 1}."
-    return "\n> No valid moves. Consider undoing or restarting."
+        return f"\n> Hint: Try moving from stack {source + 1} to stack {destination + 1}.\n"
+    return "\n> No valid moves. Consider undoing or restarting.\n"
 
 
 if __name__ == "__main__":
