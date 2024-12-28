@@ -17,7 +17,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="color-sort-game",
-    version="1.0.1",
+    version="1.0.2",
     author="Jay Gupta",
     description="A CLI-based color sorting game.",
     long_description=long_description,

@@ -13,7 +13,6 @@ See the GNU General Public License for more details.
 import os
 import random
 
-from jeepney.low_level import endian_map
 from tabulate import tabulate
 from colorama import Style, Fore, Back
 from .constants import MAX_STACK_SIZE
