@@ -34,7 +34,7 @@ def main():
 
             if all(check_win_condition(stack) for stack in stack_list if stack):
                 print(f"\n> Congratulations, {player_name}! You solved the game.")
-                new = input(f"\n> {prompts(context="repeat")}[Y/n]\n> ")
+                new = input(f"\n> {prompts(context='repeat')}[Y/n]\n> ")
                 if new not in ['Y', '']:
                     break
                 else:
@@ -45,10 +45,10 @@ def main():
                     continue
 
             if new:
-                print("\n> " + prompts(context="new"))
+                print(f"\n> {prompts(context='new')}")
                 new = False
             else:
-                print("\n> " + prompts(context="transition"))
+                print(f"\n> {prompts(context='transition')}")
 
             command = input("> Enter your move or a command\n> ").strip().upper()
 
@@ -57,7 +57,7 @@ def main():
             elif command == RESET_COMMAND:
                 stack_list = [stack.copy() for stack in original_stack_list]
                 print("\n> Game reset!")
-                print("> "+prompts(context="restart")+"\n")
+                print(f"> {prompts(context='restart')}\n")
             elif command == HINT_COMMAND:
                 hint = provide_hint(stack_list)
                 print(hint)
@@ -80,7 +80,7 @@ def main():
                     if process_move(stack_list[source], stack_list[destination]):
                         print(f"\n> Moved from stack {source + 1} to stack {destination + 1}.\n")
                     else:
-                        print(f"\n> Invalid move. Please try again.\n> {prompts(context="error")}\n")
+                        print(f"\n> Invalid move. Please try again.\n> {prompts(context='error')}\n")
                 except ValueError:
                     print(f"\n> Invalid input. Please use the format 1->2 or a valid command.\n> {prompts(context='error')}\n")
 
