@@ -81,8 +81,8 @@ def main():
                         print(f"\n> Moved from stack {source + 1} to stack {destination + 1}.\n")
                     else:
                         print(f"\n> Invalid move. Please try again.\n> {prompts(context='error')}\n")
-                except ValueError:
-                    print(f"\n> Invalid input. Please use the format 1->2 or a valid command.\n> {prompts(context='error')}\n")
+                except Exception:
+                    print(f"\n> Invalid input. Please use the right format or a valid command.\n> {prompts(context='error')}\n")
 
     finally:
         # Restore the main screen buffer

@@ -71,8 +71,8 @@ def process_move(source, destination):
     """
     flag = False
 
-    if not source or len(destination) == MAX_STACK_SIZE:
-        return flag  # Cannot move from an empty stack or to stack of max length
+    if not source or len(destination) == MAX_STACK_SIZE or source == destination:
+        return flag  # Cannot move from an empty stack or to stack of max length or to the same stack
 
     while (not destination or source[-1] == destination[-1]) and len(destination) != MAX_STACK_SIZE:
         destination.append(source.pop())
