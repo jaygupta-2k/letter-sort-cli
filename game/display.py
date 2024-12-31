@@ -15,20 +15,14 @@ import random
 
 from tabulate import tabulate
 from colorama import Style, Fore, Back
-from .constants import MAX_STACK_SIZE
+from .constants import MAX_STACK_SIZE, icon
 
 def welcome():
     """
     Displays the welcome message for the game.
     """
-    c, l = os.get_terminal_size()
-    header = " Color Sort Game "
-    padding=c-len(header)
-    left_pad=padding//2
-    right_pad=padding-left_pad
-
     os.system('cls' if os.name == 'nt' else 'clear')
-    print(Fore.WHITE+f"{'-'*left_pad}{header}{'-'*right_pad}\n")
+    print(Fore.WHITE+icon+Fore.WHITE)
     print("Welcome to the Color Sort Game!\n")
     how_to_play()
     player_name = input("> Enter your name\n> ")
