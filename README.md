@@ -1,7 +1,22 @@
-# Color Sort
+# [ColorSort](https://test.pypi.org/project/color-sort-game/)
 Recreating the classic color sort game in Python.
 
-## How to run?
+## How to install?
+### Method 1: Using pip
+1. Install the package using pip
+   ```
+   pip install -i https://test.pypi.org/simple/ color-sort-game
+   ```
+   Note: If you are using Linux, you might have to use one of the following commands
+   ```
+   pip3 install -i https://test.pypi.org/simple/ color-sort-game
+   pipx install -i https://test.pypi.org/simple/ color-sort-game
+   ```
+2. Run the game
+   ```
+    color-sort
+   ```
+### Method 2: Using source code
 1. Get the code.
    You can either download the code or clone it using git.
    ```
@@ -23,9 +38,8 @@ Recreating the classic color sort game in Python.
    ```
    color-sort
    ```
-
 ## To-do
-1. Write an algorithm to solve the game.
-2. Improve hints function logic.
-3. Allow users to configure stack sizes or themes via CLI flags or config files.
-4. Add scroll to the game screen, preferably using mouse.
+- Write an algorithm to solve the game.
+- Improve hints function logic.
+- Allow users to configure stack sizes or themes via CLI flags or config files.
+- Add scroll to the game screen, preferably using mouse.
